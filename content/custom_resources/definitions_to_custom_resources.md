@@ -1,10 +1,7 @@
 +++
 title = "Converting Definitions to Custom Resources"
 draft = false
-
 gh_repo = "chef-web-docs"
-
-aliases = ["/definitions.html"]
 
 [menu]
   [menu.infra]
@@ -14,12 +11,13 @@ aliases = ["/definitions.html"]
     weight = 30
 +++
 
-This topic covers migrating existing definitions to custom resources.
-Custom resources are integral to the modern Chef Infra workflow. While
-definitions are not yet deprecated, we *strongly* advise migrating to
-custom resources immediately in order to benefit from the many features
-of Chef Infra such as notifications, reporting, why-run mode, and
-ChefSpec unit testing.
+## Migrating from Definitions to Custom Resources
+
+It is no longer recommended to write resources in the Definitions format.
+
+This guide describes how to migrate from an existing Definition to a Custom Resource.
+
+If you are creating a Custom Resource from scratch please see the [Custom Resource Getting Started Guide](getting-started.md) instead.
 
 ## Definitions
 
@@ -33,29 +31,28 @@ Though a definition looks like a resource, and at first glance seems
 like it could be used interchangeably, some important differences exist.
 Definitions:
 
--   Are not true resources
--   Are processed when resource collection is compiled, not when a node
-    is converged
--   Don't support common resource properties, such as `notifies`,
-    `subscribes`, `only_if`, `not_if`, and `sensitive`
--   Don't support input validation in passed arguments, unlike a
-    resource which supports validation with properties
--   Don't support `why-run` mode
--   Can't report to Chef Automate
--   Cannot be tested with ChefSpec
--   There are known issues with the definition parameters hash where certain names, `timeout` for example,
-    will not work. These issues will not be fixed.
+- Are not true resources
+- Are processed when resource collection is compiled, not when a node
+  is converged
+- Don't support common resource properties, such as `notifies`,
+  `subscribes`, `only_if`, `not_if`, and `sensitive`
+- Do not support input validation in passed arguments, unlike a
+  resource which supports validation with properties
+- Do not support `why-run` mode
+- Cannot report to Chef Automate
+- Cannot be tested with ChefSpec
+- Some Definition paramters have known bugs, and will not be fixed
 
 ## Syntax
 
 A definition had four components:
 
--   A resource name
--   Zero or more arguments that define parameters their default values;
-    if a default value was not specified, it was assumed to be `nil`
--   A hash that could have been used within a definition's body to
-    provide access to parameters and their values
--   The body of the definition
+- A resource name
+- Zero or more arguments that define parameters their default values;
+  if a default value was not specified, it was assumed to be `nil`
+- A hash that could have been used within a definition's body to
+  provide access to parameters and their values
+- The body of the definition
 
 The basic syntax of a definition was:
 
