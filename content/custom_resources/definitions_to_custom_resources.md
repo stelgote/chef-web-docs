@@ -40,7 +40,7 @@ Definitions:
 - Do not support `why-run` mode
 - Cannot report to Chef Automate
 - Cannot be tested with ChefSpec
-- Some Definition paramters have known bugs, and will not be fixed
+- Some Definition parameters have known bugs, and will not be fixed
 
 ## Syntax
 
