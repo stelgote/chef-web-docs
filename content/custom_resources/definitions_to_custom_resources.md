@@ -33,7 +33,7 @@ Definitions:
 - Are not true resources
 - Are processed when resource collection is compiled, not when a node
   is converged
-- Don't support common resource properties, such as `notifies`,
+- Don't support common resource properties, such as `notifies`, `compile_time`, 
   `subscribes`, `only_if`, `not_if`, and `sensitive`
 - Do not support input validation in passed arguments, unlike a
   resource which supports validation with properties
